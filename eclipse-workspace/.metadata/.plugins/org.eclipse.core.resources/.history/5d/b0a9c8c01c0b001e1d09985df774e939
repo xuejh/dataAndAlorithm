@@ -1,0 +1,14 @@
+package com.aa.cc;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList list  = new ArrayList();
+//		list.add(11);
+//		list.add(0, 22);
+//		list.remove(1);
+		list.get(-10);
+	}
+
+}

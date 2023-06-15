@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.aa.bb.Times"/>
+    <fullyQualifiedTypeName name="com.aa.bb.Times.Task"/>
+    <fullyQualifiedTypeName name="java.security.DrbgParameters.Capability"/>
+    <fullyQualifiedTypeName name="com.aa.cc.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+</qualifiedTypeNameHistroy>
