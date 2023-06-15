@@ -110,7 +110,7 @@ public class ArrayList {
 			elements = element1;
 		}
 		
-		for(int i=size-1;i>index;i--) {
+		for(int i=size-2;i>index;i--) {
 			elements[i] = elements[i-1];
 		}
 		

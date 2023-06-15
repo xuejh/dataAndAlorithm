@@ -94,12 +94,12 @@ public class ArrayList {
 	 * @param element
 	 */
 	public void add(int index, int element) {
-		
+		size ++;
 		if(index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
 		}
 		
-		size ++;
+		
 		if(size >= elements.length) {
 			int[] element1 = new int[elements.length *2];
 			
@@ -110,13 +110,11 @@ public class ArrayList {
 			elements = element1;
 		}
 		
-		for(int i=size-1;i>index;i--) {
+		for(int i=size;i<=index;i--) {
 			elements[i] = elements[i-1];
 		}
 		
 		elements[index] = element;
-		
-		
 	}
 
 	/**
