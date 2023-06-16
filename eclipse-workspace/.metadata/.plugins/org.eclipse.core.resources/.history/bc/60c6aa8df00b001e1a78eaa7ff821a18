@@ -67,7 +67,7 @@ public class ArrayList<E> {
 	 * @param index
 	 * @return
 	 */
-	public E get(int index) {
+	public int get(int index) {
 		rangeCheck(index);
 		return elements[index];
 	}
@@ -78,7 +78,7 @@ public class ArrayList<E> {
 	 * @param element
 	 * @return 原来的元素ֵ
 	 */
-	public E set(int index, E element) {
+	public int set(int index, E element) {
 		rangeCheck(index);
 		E old = elements[index];
 		elements[index] = element;
@@ -108,7 +108,7 @@ public class ArrayList<E> {
 			return;
 		}
 		int newCapacity = oldCapacity + (oldCapacity >> 1);
-		E[] newElements = (E[])new Object[newCapacity];
+		E[] newElements = new E[newCapacity];
 		for(int i=0;i<size;i++) {
 			newElements[i] = elements[i];
 		}

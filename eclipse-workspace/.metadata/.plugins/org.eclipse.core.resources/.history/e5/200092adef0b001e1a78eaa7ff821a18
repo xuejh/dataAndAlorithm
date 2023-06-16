@@ -2,17 +2,16 @@ package com.aa.cc;
 
 
 
-public class ArrayList<E> {
+public class ArrayList {
 	
 	private  int size;
-	private E[] elements;
+	private int[] elements;
 	
 	private static final int DEFAULT_CAPACITY = 2;
 	private static final int ELEMENT_NOT_FOUNT = -1;
-	@SuppressWarnings("unchecked")
 	public ArrayList(int capaticy) {
 		capaticy = (capaticy  < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
-		elements = (E[])new Object[capaticy];
+		elements = new int[capaticy];
 	}
 	
 	public ArrayList() {
@@ -48,7 +47,7 @@ public class ArrayList<E> {
 	 * @param element
 	 * @return
 	 */
-	public boolean contains(E element) {
+	public boolean contains(int element) {
 		return indexOf(element) != ELEMENT_NOT_FOUNT;
 	}
 
@@ -56,7 +55,7 @@ public class ArrayList<E> {
 	 * 添加元素到尾部
 	 * @param element
 	 */
-	public void add(E element) {
+	public void add(int element) {
 		
 		//add(size, element);
 		add(size, element);
@@ -67,7 +66,7 @@ public class ArrayList<E> {
 	 * @param index
 	 * @return
 	 */
-	public E get(int index) {
+	public int get(int index) {
 		rangeCheck(index);
 		return elements[index];
 	}
@@ -78,9 +77,9 @@ public class ArrayList<E> {
 	 * @param element
 	 * @return 原来的元素ֵ
 	 */
-	public E set(int index, E element) {
+	public int set(int index, int element) {
 		rangeCheck(index);
-		E old = elements[index];
+		int old = elements[index];
 		elements[index] = element;
 		return old;
 	}
@@ -108,7 +107,7 @@ public class ArrayList<E> {
 			return;
 		}
 		int newCapacity = oldCapacity + (oldCapacity >> 1);
-		E[] newElements = (E[])new Object[newCapacity];
+		int[] newElements = new int[newCapacity];
 		for(int i=0;i<size;i++) {
 			newElements[i] = elements[i];
 		}
@@ -121,7 +120,7 @@ public class ArrayList<E> {
 	 * @param index
 	 * @param element
 	 */
-	public void add(int index, E element) {
+	public void add(int index, int element) {
 		
 		rangeCheckForAdd(index);
 		
@@ -151,10 +150,10 @@ public class ArrayList<E> {
 	 * @param index
 	 * @return
 	 */
-	public E remove(int index) {
+	public int remove(int index) {
 		rangeCheck(index);
 		
-		E old = elements[index];
+		int old = elements[index];
 		for (int i = index; i <size; i++) {
 			elements[i] =elements[i+1];
 		}
@@ -168,7 +167,7 @@ public class ArrayList<E> {
 	 * @param element
 	 * @return
 	 */
-	public int indexOf(E element) {
+	public int indexOf(int element) {
 		for (int i = 0; i < size; i++) {
 			if(elements[i] == element) {
 				return i;
