@@ -7,7 +7,7 @@ public class ArrayList {
 	private  int size;
 	private int[] elements;
 	
-	private static final int DEFAULT_CAPACITY = 10;
+	private static final int DEFAULT_CAPACITY = 2;
 	private static final int ELEMENT_NOT_FOUNT = -1;
 	public ArrayList(int capaticy) {
 		capaticy = (capaticy  < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
@@ -58,7 +58,7 @@ public class ArrayList {
 	public void add(int element) {
 		
 		//add(size, element);
-		elements[size ++] = element;
+		add(size, element);
 	}
 
 	/**
@@ -67,9 +67,7 @@ public class ArrayList {
 	 * @return
 	 */
 	public int get(int index) {
-		if(index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-		}
+		rangeCheck(index);
 		return elements[index];
 	}
 
@@ -80,14 +78,43 @@ public class ArrayList {
 	 * @return 原来的元素ֵ
 	 */
 	public int set(int index, int element) {
-		if(index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-		}
+		rangeCheck(index);
 		int old = elements[index];
 		elements[index] = element;
 		return old;
 	}
+	
+	private void rangeCheck(int index) {
+		if(index < 0 || index >= size) {
+			outOfBounds(index);
+		}
+	}
+	
+	private void rangeCheckForAdd(int index) {
+		if(index < 0 || index > size) {
+			outOfBounds(index);
+		}
+	}
+	
+	private void outOfBounds(int index) {
+		throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
+	}
 
+	
+	private void ensureCapacity(int capacity) {
+		int oldCapacity= elements.length;
+		if(oldCapacity >= capacity) {
+			return;
+		}
+		int newCapacity = oldCapacity + (oldCapacity >> 1);
+		int[] newElements = new int[newCapacity];
+		for(int i=0;i<size;i++) {
+			newElements[i] = elements[i];
+		}
+		elements = newElements;
+		System.out.println(oldCapacity +"扩容： "+newCapacity);
+		//System.arraycopy(newElements, newCapacity, elements, elements.length, size);
+	}
 	/**
 	 * 在index位置插入一个元素
 	 * @param index
@@ -95,12 +122,11 @@ public class ArrayList {
 	 */
 	public void add(int index, int element) {
 		
-		if(index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-		}
+		rangeCheckForAdd(index);
 		
-		size ++;
-		if(size >= elements.length) {
+		ensureCapacity(size + 1);
+		
+		/*if(size >= elements.length) {
 			int[] element1 = new int[elements.length *2];
 			
 			for(int i=0;i<elements.length;i++) {
@@ -108,14 +134,14 @@ public class ArrayList {
 			}
 			
 			elements = element1;
-		}
+		}*/
 		
-		for(int i=size-1;i>index;i--) {
-			elements[i] = elements[i-1];
+		for(int i=size-1;i>=index;i--) {
+			elements[i+1] = elements[i];
 		}
 		
 		elements[index] = element;
-		
+		size ++;
 		
 	}
 
@@ -125,9 +151,7 @@ public class ArrayList {
 	 * @return
 	 */
 	public int remove(int index) {
-		if(index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-		}
+		rangeCheck(index);
 		
 		int old = elements[index];
 		for (int i = index; i <size; i++) {
