@@ -127,7 +127,6 @@ public class ArrayList<E> {
 	 */
 	public void add(int index, E element) {
 		
-		
 		rangeCheckForAdd(index);
 		
 		ensureCapacity(size + 1);
@@ -142,8 +141,8 @@ public class ArrayList<E> {
 			elements = element1;
 		}*/
 		
-		for(int i=size;i>index;i--) {
-			elements[i] = elements[i-1];
+		for(int i=size-1;i>=index;i--) {
+			elements[i+1] = elements[i];
 		}
 		
 		elements[index] = element;
@@ -160,40 +159,24 @@ public class ArrayList<E> {
 		rangeCheck(index);
 		
 		E old = elements[index];
-		for (int i = index+1; i <=size-1; i++) {
-			elements[i-1] =elements[i];
+		for (int i = index; i <size; i++) {
+			elements[i] =elements[i+1];
 		}
 		
 		size --;
-		elements[size] = null;
 		return old;
 	}
-	
-	public void remove(E element) {
-		remove(indexOf(element));
-	}
-	
+
 	/**
 	 * 查看元素的索引
 	 * @param element
 	 * @return
 	 */
 	public int indexOf(E element) {
-		if(element == null) {
-			
-			for (int i = 0; i < size; i++) {
-				if(elements[i] == null ) {
-					return i;
-				}
+		for (int i = 0; i < size; i++) {
+			if(elements[i] == element) {
+				return i;
 			}
-			
-		}else {
-			for (int i = 0; i < size; i++) {
-				if(element.equals(elements[i]) ) {
-					return i;
-				}
-			}
-		
 		}
 		return ELEMENT_NOT_FOUNT;
 	}

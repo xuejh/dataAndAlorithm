@@ -142,8 +142,8 @@ public class ArrayList<E> {
 			elements = element1;
 		}*/
 		
-		for(int i=size;i>index;i--) {
-			elements[i] = elements[i-1];
+		for(int i=size-1;i>=index;i--) {
+			elements[i+1] = elements[i];
 		}
 		
 		elements[index] = element;
@@ -168,11 +168,7 @@ public class ArrayList<E> {
 		elements[size] = null;
 		return old;
 	}
-	
-	public void remove(E element) {
-		remove(indexOf(element));
-	}
-	
+
 	/**
 	 * 查看元素的索引
 	 * @param element
