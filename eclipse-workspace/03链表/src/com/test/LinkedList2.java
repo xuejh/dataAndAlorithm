@@ -1,9 +1,14 @@
 package com.test;
 
 
-public class LinkedList<E> extends AbstractList<E>{
+
+public class LinkedList2<E> extends AbstractList<E>{
 	
 	private Node<E> first;
+	
+	public LinkedList2() {
+		first =  new Node<E>(null, null);
+	}
 	
 	private static class Node<E>{
 		E element;
@@ -41,12 +46,8 @@ public class LinkedList<E> extends AbstractList<E>{
 	@Override
 	public void add(int index, E element) {
 		// TODO Auto-generated method stub
-		if(index == 0) {
-			first =	new Node<E>(element, first);
-		}else {
-			Node<E> prev = node(index - 1);
-			prev.next = new Node<E>(element, prev.next);
-		}
+		Node<E> prev = index == 0 ? first : node(index-1);
+		prev.next = new Node<E>(element, prev.next);
 		
 		
 		
@@ -57,14 +58,9 @@ public class LinkedList<E> extends AbstractList<E>{
 	@Override
 	public E remove(int index) {
 		// TODO Auto-generated method stub
-		Node<E> node = first;
-		if(index == 0) {
-			first =	first.next;
-		}else {
-			Node<E> prev = node(index - 1);
-			node = prev.next;
-			prev.next = node.next;
-		}
+		Node<E> prev = index == 0 ? first : node(index - 1);
+		Node<E> node = prev.next;
+		prev.next = node.next;
 		size --;
 		return node.element;
 	}
@@ -93,21 +89,19 @@ public class LinkedList<E> extends AbstractList<E>{
 	
 	private Node<E> node(int index){
 		rangeCheck(index);
-		Node<E> node = first;
+		Node<E> node = first.next;
 		for (int i = 0; i < index; i++) {
 			node = node.next;
 		}
 		return node;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		StringBuilder string = new StringBuilder();
 		string.append("size=").append(size).append(", [");
-		Node<E> node = first;
+		Node<E> node = first.next;
 		for (int i = 0; i < size; i++) {
 			if (i != 0) {
 				string.append(", ");

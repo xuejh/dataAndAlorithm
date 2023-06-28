@@ -20,14 +20,24 @@ public class Main {
 		}
 		Asserts.test(list.get(3) == 80);*/
 		
-		ArrayList<Person> persons = new ArrayList<>();
-		persons.add(new Person(10, "Jack"));
-		persons.add(new Person(12, "James"));
-		persons.add(new Person(15, "Rose"));
-		persons.add(null);
-		persons.clear();
-		//提醒JVM进行垃圾回收
-		System.gc();
+//		ArrayList<Person> persons = new ArrayList<>();
+//		persons.add(new Person(10, "Jack"));
+//		persons.add(new Person(12, "James"));
+//		persons.add(new Person(15, "Rose"));
+//		persons.add(null);
+//		persons.clear();
+//		//提醒JVM进行垃圾回收
+//		System.gc();
+		
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 50; i++) {
+			list.add(i);
+		}
+		for (int i = 0; i < 50; i++) {
+			list.remove(0);
+		}
+		
+		System.out.println(list);
 	}
 
 }

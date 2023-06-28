@@ -1,17 +1,20 @@
 package com.test;
 
 
-public class LinkedList<E> extends AbstractList<E>{
+public class LinkedList3<E> extends AbstractList<E>{
 	
 	private Node<E> first;
+	private Node<E> last;
 	
 	private static class Node<E>{
 		E element;
+		Node<E> prev;
 		Node<E> next;
 		//产生构造函数，alt+commond+S
-		public Node(E element, Node<E> next) {
+		public Node(Node<E> prev,E element, Node<E> next) {
 			this.element = element;
 			this.next = next;
+			this.prev =prev;
 		}
 		
 	}
@@ -21,6 +24,7 @@ public class LinkedList<E> extends AbstractList<E>{
 		// TODO Auto-generated method stub
 		size = 0;
 		first = null;
+		last = null;
 	}
 
 	@Override
@@ -42,10 +46,31 @@ public class LinkedList<E> extends AbstractList<E>{
 	public void add(int index, E element) {
 		// TODO Auto-generated method stub
 		if(index == 0) {
-			first =	new Node<E>(element, first);
+			Node<E> firstNode =	new Node<E>(null,element, first);
+			if(first == null) {
+				last = firstNode;
+			}else {
+				first.prev = firstNode;
+			}
+			
+			first = firstNode;
+			
+			
+		}else if(index == size) {
+			
+			Node<E> lastNode =	new Node<E>(last,element, null);
+			last.next = lastNode;
+			last = lastNode;
 		}else {
-			Node<E> prev = node(index - 1);
-			prev.next = new Node<E>(element, prev.next);
+//			Node<E> node = node(index);
+//			Node<E> newNode = new Node<E>(node.prev,element, node);
+//			node.prev.next = newNode;
+//			node.prev = newNode;
+			Node<E> next = node(index);
+			Node<E> prev = next.prev;
+			Node<E> node = new Node<>(prev, element, next);
+			prev.next = node;
+			next.prev = node;
 		}
 		
 		
@@ -93,11 +118,27 @@ public class LinkedList<E> extends AbstractList<E>{
 	
 	private Node<E> node(int index){
 		rangeCheck(index);
-		Node<E> node = first;
-		for (int i = 0; i < index; i++) {
-			node = node.next;
+		
+		if(index < (size >> 1)) {
+			
+			Node<E> node = first;
+			for (int i = 0; i < index; i++) {
+				node = node.next;
+			}
+			return node;
+			
+			
+		}else {
+			
+			Node<E> node = last;
+			for (int i = size -1; i > index; i--) {
+				node = node.prev;
+			}
+			return node;
+			
 		}
-		return node;
+		
+		
 	}
 	
 	

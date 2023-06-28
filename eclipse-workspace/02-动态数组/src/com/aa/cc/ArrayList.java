@@ -7,7 +7,7 @@ public class ArrayList<E> {
 	private  int size;
 	private E[] elements;
 	
-	private static final int DEFAULT_CAPACITY = 2;
+	private static final int DEFAULT_CAPACITY = 10;
 	private static final int ELEMENT_NOT_FOUNT = -1;
 	@SuppressWarnings("unchecked")
 	public ArrayList(int capaticy) {
@@ -166,6 +166,7 @@ public class ArrayList<E> {
 		
 		size --;
 		elements[size] = null;
+		trim();
 		return old;
 	}
 	
@@ -198,6 +199,23 @@ public class ArrayList<E> {
 		return ELEMENT_NOT_FOUNT;
 	}
 	
+	private void trim() {
+		int oldCapacity = elements.length;
+		int newCapacity = (oldCapacity >> 1);
+		if(size >= newCapacity || oldCapacity <= DEFAULT_CAPACITY) {
+			return;
+		}
+		
+		//剩余空间还很多
+		
+		E[] newElements = (E[]) new Object[newCapacity];
+		for(int i=0;i<size;i++) {
+			newElements[i] = elements[i];
+		}
+		elements = newElements;
+		
+		System.out.println(oldCapacity +"缩容： "+newCapacity);
+	}
 	@Override
 	public String toString() {
 		/*StringBuilder str = new StringBuilder();

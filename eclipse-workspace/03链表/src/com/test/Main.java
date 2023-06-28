@@ -3,7 +3,7 @@ package com.test;
 public class Main {
 
 	public static void main(String[] args) {
-		LinkedList<Integer> list = new LinkedList<>();
+		LinkedList2<Integer> list = new LinkedList2<>();
 		list.add(20);
 		list.add(0,10);
 		list.add(30);
