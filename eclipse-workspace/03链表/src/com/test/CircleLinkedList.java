@@ -1,35 +1,20 @@
 package com.test;
 
 
-public class LinkedList3<E> extends AbstractList<E>{
+
+public class CircleLinkedList<E> extends AbstractList<E>{
 	
 	private Node<E> first;
-	private Node<E> last;
 	
 	private static class Node<E>{
 		E element;
-		Node<E> prev;
 		Node<E> next;
 		//产生构造函数，alt+commond+S
-		public Node(Node<E> prev,E element, Node<E> next) {
+		public Node(E element, Node<E> next) {
 			this.element = element;
 			this.next = next;
-			this.prev =prev;
 		}
 		
-		@Override
-		public String toString() {
-			// TODO Auto-generated method stub
-			StringBuilder sb = new StringBuilder();
-			if(prev != null) {
-				sb.append(prev.element);
-			}
-			sb.append("_").append(element).append("_");
-			if(next != null) {
-				sb.append(next.element);
-			}
-			return sb.toString();
-		}
 	}
 
 	@Override
@@ -37,7 +22,6 @@ public class LinkedList3<E> extends AbstractList<E>{
 		// TODO Auto-generated method stub
 		size = 0;
 		first = null;
-		last = null;
 	}
 
 	@Override
@@ -59,31 +43,19 @@ public class LinkedList3<E> extends AbstractList<E>{
 	public void add(int index, E element) {
 		// TODO Auto-generated method stub
 		if(index == 0) {
-			Node<E> firstNode =	new Node<E>(null,element, first);
-			if(first == null) {
-				last = firstNode;
-			}else {
-				first.prev = firstNode;
+			Node<E> last = (size == 0) ? first : node(size - 1);
+			first =	new Node<E>(element, first);
+			
+			if(last == null) {
+				last = first;
+			} else {
+				last.next = first;
 			}
 			
-			first = firstNode;
 			
-			
-		}else if(index == size) {
-			
-			Node<E> lastNode =	new Node<E>(last,element, null);
-			last.next = lastNode;
-			last = lastNode;
 		}else {
-//			Node<E> node = node(index);
-//			Node<E> newNode = new Node<E>(node.prev,element, node);
-//			node.prev.next = newNode;
-//			node.prev = newNode;
-			Node<E> next = node(index);
-			Node<E> prev = next.prev;
-			Node<E> node = new Node<>(prev, element, next);
-			prev.next = node;
-			next.prev = node;
+			Node<E> prev = node(index - 1);
+			prev.next = new Node<E>(element, prev.next);
 		}
 		
 		
@@ -95,20 +67,23 @@ public class LinkedList3<E> extends AbstractList<E>{
 	@Override
 	public E remove(int index) {
 		// TODO Auto-generated method stub
-		Node<E> node = node(index);
-		if(node.prev == null) {
-			first = node.next;
+		Node<E> node = first;
+		if(index == 0) {
+			
+			if(size == 1) {
+				first = null;
+			}else {
+				Node<E> last = node(size -1);
+				first =	first.next;
+				last.next = first;
+			}
+			
+			
 		}else {
-			node.prev.next = node.next;
+			Node<E> prev = node(index - 1);
+			node = prev.next;
+			prev.next = node.next;
 		}
-		
-		if(node.next == null) {
-			last = node.prev;
-		}else {
-			node.next.prev = node.prev;
-		}
-		
-		
 		size --;
 		return node.element;
 	}
@@ -137,27 +112,11 @@ public class LinkedList3<E> extends AbstractList<E>{
 	
 	private Node<E> node(int index){
 		rangeCheck(index);
-		
-		if(index < (size >> 1)) {
-			
-			Node<E> node = first;
-			for (int i = 0; i < index; i++) {
-				node = node.next;
-			}
-			return node;
-			
-			
-		}else {
-			
-			Node<E> node = last;
-			for (int i = size -1; i > index; i--) {
-				node = node.prev;
-			}
-			return node;
-			
+		Node<E> node = first;
+		for (int i = 0; i < index; i++) {
+			node = node.next;
 		}
-		
-		
+		return node;
 	}
 	
 	
@@ -173,7 +132,7 @@ public class LinkedList3<E> extends AbstractList<E>{
 				string.append(", ");
 			}
 			
-			string.append(node);
+			string.append(node.element);
 			
 //			if (i != size - 1) {
 //				string.append(", ");

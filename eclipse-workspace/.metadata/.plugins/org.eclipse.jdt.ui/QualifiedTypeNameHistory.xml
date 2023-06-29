@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="com.aa.bb.Times"/>
     <fullyQualifiedTypeName name="com.aa.bb.Times.Task"/>
     <fullyQualifiedTypeName name="java.security.DrbgParameters.Capability"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
     <fullyQualifiedTypeName name="com.aa.cc.Asserts"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
@@ -22,8 +21,10 @@
     <fullyQualifiedTypeName name="com.test.LinkedList2"/>
     <fullyQualifiedTypeName name="com.test.LinkedList2.Node"/>
     <fullyQualifiedTypeName name="javax.lang.model.util.Elements"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.aa.cc.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.test.LinkedList3.Node"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
 </qualifiedTypeNameHistroy>

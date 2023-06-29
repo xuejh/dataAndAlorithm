@@ -1,7 +1,7 @@
 package com.test;
 
 
-public class LinkedList3<E> extends AbstractList<E>{
+public class CircleTwoLinkedList<E> extends AbstractList<E>{
 	
 	private Node<E> first;
 	private Node<E> last;
@@ -62,18 +62,21 @@ public class LinkedList3<E> extends AbstractList<E>{
 			Node<E> firstNode =	new Node<E>(null,element, first);
 			if(first == null) {
 				last = firstNode;
+				firstNode.next = firstNode;
 			}else {
 				first.prev = firstNode;
 			}
 			
 			first = firstNode;
-			
+			first.prev = last;
 			
 		}else if(index == size) {
 			
-			Node<E> lastNode =	new Node<E>(last,element, null);
+			Node<E> lastNode =	new Node<E>(last,element, first);
 			last.next = lastNode;
 			last = lastNode;
+			last.next = first;
+			first.prev = last;
 		}else {
 //			Node<E> node = node(index);
 //			Node<E> newNode = new Node<E>(node.prev,element, node);
