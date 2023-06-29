@@ -6,6 +6,23 @@ public class CircleTwoLinkedList<E> extends AbstractList<E>{
 	private Node<E> first;
 	private Node<E> last;
 	
+	private Node<E> current;
+	
+	public void reset() {
+		current = first;
+	}
+	
+	public void next() {
+		current = current.next;
+	}
+	
+	public void remove() {
+		Node<E> next = current.next;
+		System.out.println(current.element);
+		remove(indexOf(current.element));
+		current = next;
+	}
+	
 	private static class Node<E>{
 		E element;
 		Node<E> prev;
@@ -69,7 +86,7 @@ public class CircleTwoLinkedList<E> extends AbstractList<E>{
 			
 			first = firstNode;
 			first.prev = last;
-			
+			last.next = first;
 		}else if(index == size) {
 			
 			Node<E> lastNode =	new Node<E>(last,element, first);
@@ -99,14 +116,18 @@ public class CircleTwoLinkedList<E> extends AbstractList<E>{
 	public E remove(int index) {
 		// TODO Auto-generated method stub
 		Node<E> node = node(index);
-		if(node.prev == null) {
+		if(node.prev == last) {
+			
 			first = node.next;
+			first.prev = last;
 		}else {
 			node.prev.next = node.next;
 		}
 		
-		if(node.next == null) {
+		if(node.next == first) {
 			last = node.prev;
+			node.prev.next = node.next;
+			first.prev = last;
 		}else {
 			node.next.prev = node.prev;
 		}
@@ -132,6 +153,7 @@ public class CircleTwoLinkedList<E> extends AbstractList<E>{
 				if(element.equals(node.element) ) {
 					return i;
 				}
+				node = node.next;
 			}
 		
 		}
