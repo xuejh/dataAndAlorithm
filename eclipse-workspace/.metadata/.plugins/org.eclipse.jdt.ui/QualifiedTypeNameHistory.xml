@@ -21,10 +21,16 @@
     <fullyQualifiedTypeName name="com.test.LinkedList2"/>
     <fullyQualifiedTypeName name="com.test.LinkedList2.Node"/>
     <fullyQualifiedTypeName name="javax.lang.model.util.Elements"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.aa.cc.ArrayList"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="com.test.LinkedList3.Node"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="apple.laf.JRSUIConstants.Size"/>
+    <fullyQualifiedTypeName name="com.test.CircleLinkedList"/>
+    <fullyQualifiedTypeName name="com.test.CircleLinkedList.Node"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.zip.CRC32"/>
+    <fullyQualifiedTypeName name="com.test.CircleTwoLinkedList"/>
+    <fullyQualifiedTypeName name="com.test.CircleTwoLinkedList.Node"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>
