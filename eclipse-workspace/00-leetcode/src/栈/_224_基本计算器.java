@@ -22,18 +22,23 @@ public class _224_基本计算器 {
 		}
 		int sum = 0;
 		while (stack.size() >=3) {
-			char sc1 = stack.pop();
-			char sc2 = stack.pop();
-			char sc3 = stack.pop();
+			char sc1 = stack.elementAt(0);
+			char sc2 = stack.elementAt(1);
+			char sc3 = stack.elementAt(2);
+			stack.remove(0);
+			stack.remove(0);
+			stack.remove(0);
 			if(sc2 == '+') {
-				sum = (sc1 - '0') + (sc3 -'0');
-				stack.push((char) (sum + '0'));
+				sum =  (sc1 - '0') + (sc3 -'0');
+				stack.add(0, (char) (sum + '0'));
 			}else if(sc2 == '-') {
 				sum = (sc1 - '0') - (sc3 -'0');
-				stack.push((char) (sum + '0'));
+				stack.add(0, (char) (sum + '0'));
 			}
 			
 		}
+		
+
 		return stack.pop()-'0';
 		
     }
@@ -43,28 +48,32 @@ public class _224_基本计算器 {
 		char ch = stack.pop();
 		int sum = 0;
 		while (ch != '(') {
-			
 			stack1.push(ch);
+			ch = stack.pop();
 		}
+		stack.pop();
 		
 		while (stack1.size() >=3) {
-			char sc1 = stack1.pop();
-			char sc2 = stack1.pop();
-			char sc3 = stack1.pop();
+			char sc1 = stack1.elementAt(0);
+			char sc2 = stack1.elementAt(1);
+			char sc3 = stack1.elementAt(2);
+			stack1.remove(0);
+			stack1.remove(0);
+			stack1.remove(0);
 			if(sc2 == '+') {
-				sum = (sc1 - '0') + (sc3 -'0');
-				stack1.push((char) (sum + '0'));
+				sum =  (sc1 - '0') + (sc3 -'0');
+				stack1.add(0, (char) (sum + '0'));
 			}else if(sc2 == '-') {
 				sum = (sc1 - '0') - (sc3 -'0');
-				stack1.push((char) (sum + '0'));
+				stack.add(0, (char) (sum + '0'));
 			}
 			
 		}
-		stack.pop();
+		
 		return stack1.pop();
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(calculate(" 2-1 + 2 "));
+		System.out.println(calculate("(1+(4+5+2)-3)+(6+8)"));
 	}
 }
