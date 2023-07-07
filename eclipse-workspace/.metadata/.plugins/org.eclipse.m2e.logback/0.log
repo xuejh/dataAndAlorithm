@@ -80,3 +80,6 @@ java.io.FileNotFoundException: /Users/putao/github/dataAndAlorithm/eclipse-works
 2023-07-06 09:50:47,540 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2023-07-06 09:50:49,145 [Worker-19: Decoration Calculation] WARN  org.eclipse.jgit.util.FS_POSIX - Exception caught during execution of command '[bash, --login, -c, which git]' in '/Users/putao', return code '127', error message 'bash: which: command not found
 '
+2023-07-07 08:53:49,058 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-07-07 08:53:49,325 [Worker-1: Decoration Calculation] WARN  org.eclipse.jgit.util.FS_POSIX - Exception caught during execution of command '[bash, --login, -c, which git]' in '/Users/putao', return code '127', error message 'bash: which: command not found
+'
