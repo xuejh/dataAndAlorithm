@@ -5,8 +5,8 @@ import java.util.Queue;
 
 public class _225_用队列实现栈 {
 	
-	Queue<Integer> queue1 = new LinkedList<>();
-	Queue<Integer> queue2 = new LinkedList<>();
+	private Queue<Integer> queue1 = new LinkedList<Integer>();
+	private Queue<Integer> queue2 = new LinkedList<Integer>();
 	
 	public _225_用队列实现栈() {
 
@@ -17,6 +17,7 @@ public class _225_用队列实现栈 {
     	while (!queue1.isEmpty()) {
 			queue2.offer(queue1.poll());
 		}
+    	
     	Queue<Integer> temp = queue2;
     	queue2 = queue1;
     	queue1 = temp;
@@ -27,7 +28,6 @@ public class _225_用队列实现栈 {
     }
     
     public int top() {
-    	
     	return queue1.peek();
     }
     
