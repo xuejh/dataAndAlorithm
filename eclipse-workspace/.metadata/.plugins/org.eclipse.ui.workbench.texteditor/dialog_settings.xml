@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="PersonComparator"/>
+		<item key="selection" value="isComplete"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="isComplete"/>
+			<item value="iscomplete"/>
+			<item value="inorderTraversal"/>
+			<item value="preorderTraversal"/>
+			<item value="predecessor"/>
 			<item value="PersonComparator"/>
 			<item value="comparator"/>
 			<item value="ops"/>
@@ -19,10 +24,11 @@
 			<item value="element"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="977"/>
+		<item key="DIALOG_X_ORIGIN" value="975"/>
 		<item key="DIALOG_Y_ORIGIN" value="123"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="402"/>
