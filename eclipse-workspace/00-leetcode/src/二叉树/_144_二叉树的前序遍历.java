@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class _144_二叉树的前序遍历 {
 
@@ -27,17 +28,18 @@ public class _144_二叉树的前序遍历 {
 		 	if(root == null) {
 		 		return list;
 		 	}
-		 	Queue<TreeNode> queue = new LinkedList<>();
+		 	Stack<TreeNode> stack = new Stack<>();
 		 	
-		 	queue.offer(root);
-		 	while (queue.size()!=0) {
-				TreeNode node = queue.poll();
+		 	stack.push(root);
+		 	while (stack.size()!=0) {
+				TreeNode node = stack.pop();
 				list.add(node.val);
-				if(node.left!= null) {
-					queue.offer(node.left);
-				}
+				
 				if(node.right!= null) {
-					queue.offer(node.right);
+					stack.push(node.right);
+				}
+				if(node.left!= null) {
+					stack.push(node.left);
 				}
 			}
 		 	
