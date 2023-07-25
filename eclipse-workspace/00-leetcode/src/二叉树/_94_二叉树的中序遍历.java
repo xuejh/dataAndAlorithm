@@ -24,17 +24,25 @@ public class _94_二叉树的中序遍历 {
 		List<Integer> list = new ArrayList<>();
 		
 		Stack<TreeNode> stack = new Stack<>();
-		if(root != null) {
-			stack.push(root);
-		}
 		
-		while (stack.size() != 0) {
-			TreeNode node = stack.peek();
-			if(node.left != null) {
-				stack.push(node.left);
+		
+		while (!stack.isEmpty()|| root!=null) {
+
+			
+			if(root != null) {
+				stack.push(root);
+				root = root.left;
+				
+			}else {
+				root = stack.pop();
+				list.add(root.val);
+				root = root.right;
+				
 			}
 			
 		}
+		
+		return list;
     }
 	
 	public static void main(String[] args) {
