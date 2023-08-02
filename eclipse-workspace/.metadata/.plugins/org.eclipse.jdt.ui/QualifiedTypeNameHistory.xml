@@ -41,14 +41,16 @@
     <fullyQualifiedTypeName name="com.mj.BinarySearchTree.Node"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="二叉树._226_翻转二叉树.TreeNode"/>
-    <fullyQualifiedTypeName name="java.util.Queue"/>
     <fullyQualifiedTypeName name="java.util.ArrayDeque"/>
     <fullyQualifiedTypeName name="二叉树._144_二叉树的前序遍历.TreeNode"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.LinkedList"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.Stack"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="javax.management.Query"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="二叉树.TreeNode"/>
+    <fullyQualifiedTypeName name="java.util.Stack"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="自己练习.TreeNode"/>
 </qualifiedTypeNameHistroy>
