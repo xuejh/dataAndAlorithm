@@ -1,5 +1,7 @@
 package 自己练习;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class 中序遍历 {
@@ -31,6 +33,39 @@ public class 中序遍历 {
 		}
 	}
 
+	public static List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+		 	if(root == null) {
+		 		return list;
+		 	}
+		 	
+		 	TreeNode cur1 = root;
+		 	TreeNode cur2 = null;
+		 	while (cur1 != null) {
+				cur2 = cur1.left;
+				if(cur2 != null) {
+					while (cur2.right!=null && cur2.right != cur1) {
+						cur2 = cur2.right;
+					}
+					
+					if(cur2.right == null) {
+						cur2.right = cur1;
+						list.add(cur1.val);
+						cur1 = cur1.left;
+						continue;
+					}else {
+						cur2.right = null;
+					}
+				}else {
+					list.add(cur1.val);
+				}
+				
+				cur1 = cur1.right;
+			}
+		 	
+		 	
+		 	return list;
+    }
 	
 	
 	public static void main(String[] args) {
