@@ -2,13 +2,17 @@ package 二叉树;
 
 import java.util.Stack;
 
+/*
+ * https://leetcode-cn.com/problems/balanced-binary-tree/
+ */
 public class _110_平衡二叉树 {
 	
 	
 	public int getTreeNodeHeight(TreeNode node) {
-		if(node.left == null && node.right == null) {
-			return 1;
+		if(node == null) {
+			return 0;
 		}
+		
 		
 		return Math.max(getTreeNodeHeight(node.left), getTreeNodeHeight(node.right)) + 1;
 	}
