@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class _102_二叉树的层序遍历 {
 	
-	public static void levelOrder(TreeNode node) {
+	public static void levelOrder1(TreeNode node) {
 		if(node == null) {
 			return;
 		}
@@ -31,6 +31,28 @@ public class _102_二叉树的层序遍历 {
 			
 		}
 	}
+	
+	
+	public static void levelOrder(TreeNode node) {
+		if(node == null) {
+			return;
+		}
+		
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.offer(node);
+		while (!queue.isEmpty()) {
+			TreeNode node1 = queue.poll();
+			System.out.println(node1.val + " ");
+			if(node1.left != null) {
+				queue.offer(node1.left);
+			}
+			if(node1.right!=null) {
+				queue.offer(node1.right);
+			}
+			
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		TreeNode node0 = new TreeNode(3);
