@@ -9,7 +9,20 @@ import java.util.Stack;
 /*
  * https://leetcode.cn/problems/binary-tree-level-order-traversal/
  */
+
+
+
+
 public class _102_二叉树的层序遍历 {
+	
+	public static class LevelTreeNode{
+		int level;
+		TreeNode node;
+		public LevelTreeNode(TreeNode node,int level) {
+			this.level = level;
+			this.node = node;
+		}
+	}
 	
 	public static void levelOrder1(TreeNode node) {
 		if(node == null) {
@@ -33,24 +46,50 @@ public class _102_二叉树的层序遍历 {
 	}
 	
 	
-	public static void levelOrder(TreeNode node) {
+	public static List<List<Integer>> levelOrder(TreeNode node) {
+		List<List<Integer>> lists = new LinkedList<>();
+		
 		if(node == null) {
-			return;
+			return lists;
 		}
 		
-		Queue<TreeNode> queue = new LinkedList<>();
-		queue.offer(node);
+		
+		
+		Queue<LevelTreeNode> queue = new LinkedList<>();
+		
+		LevelTreeNode node0 = new LevelTreeNode(node, 0);
+		queue.offer(node0);
+		
+		int level = 0;
+		LinkedList<Integer> list = new LinkedList<>();
 		while (!queue.isEmpty()) {
-			TreeNode node1 = queue.poll();
-			System.out.println(node1.val + " ");
-			if(node1.left != null) {
-				queue.offer(node1.left);
+			
+			
+			LevelTreeNode node1 = queue.poll();
+			if(level == node1.level) {
+				list.add(node1.node.val);
+			}else {
+				lists.add(list);
+				level ++;
+				list = new LinkedList<>();
+				list.add(node1.node.val);
 			}
-			if(node1.right!=null) {
-				queue.offer(node1.right);
+		//	System.out.println(node1.node.val + " ");
+			if(node1.node.left != null) {
+				LevelTreeNode node2 = new LevelTreeNode(node1.node.left, node1.level +1);
+				queue.offer(node2);
+			}
+			if(node1.node.right!=null) {
+				LevelTreeNode node2 = new LevelTreeNode(node1.node.right, node1.level +1);
+				queue.offer(node2);
 			}
 			
 		}
+		
+		if(!list.isEmpty()) {
+			lists.add(list);
+		}
+		return lists;
 	}
 	
 	
