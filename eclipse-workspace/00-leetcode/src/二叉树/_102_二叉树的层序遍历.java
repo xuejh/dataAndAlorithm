@@ -46,7 +46,7 @@ public class _102_二叉树的层序遍历 {
 	}
 	
 	
-	public static List<List<Integer>> levelOrder(TreeNode node) {
+	public static List<List<Integer>> levelOrder2(TreeNode node) {
 		List<List<Integer>> lists = new LinkedList<>();
 		
 		if(node == null) {
@@ -89,6 +89,58 @@ public class _102_二叉树的层序遍历 {
 		if(!list.isEmpty()) {
 			lists.add(list);
 		}
+		return lists;
+	}
+	
+	
+	
+	List<List<Integer>> levels = new ArrayList<List<Integer>>();
+	
+	public void helper(TreeNode node,int level) {
+		if(levels.size() == level) {
+			levels.add(new ArrayList<Integer>());
+		}
+		levels.get(level).add(node.val);
+		
+		if(node.left != null) {
+			helper(node.left, level +1);
+		}
+		if(node.right != null) {
+			helper(node.right, level +1);
+		}
+	}
+
+	public List<List<Integer>> levelOrder3(TreeNode root) {
+		if(root == null) return levels;
+		helper(root, 0);
+		return levels;
+	}
+	
+	public static List<List<Integer>> levelOrder(TreeNode root) {
+		List<List<Integer>> lists = new ArrayList<List<Integer>>();
+		if(root == null) {
+			return lists;
+		}
+		
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			
+			int num = queue.size();
+			List<Integer> list = new LinkedList<>();
+			for(int i=0;i<num;i++) {
+				TreeNode node = queue.poll();
+				list.add(node.val);
+				if(node.left != null) {
+					queue.offer(node.left);
+				}
+				if(node.right != null) {
+					queue.offer(node.right);
+				}
+			}
+			lists.add(list);
+		}
+		
 		return lists;
 	}
 	
