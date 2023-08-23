@@ -54,6 +54,6 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="java.util.Stack"/>
-    <fullyQualifiedTypeName name="二叉树.TreeNode"/>
     <fullyQualifiedTypeName name="二叉树._450_删除二叉搜索树中的节点.PTreeNode"/>
+    <fullyQualifiedTypeName name="二叉树.TreeNode"/>
 </qualifiedTypeNameHistroy>
