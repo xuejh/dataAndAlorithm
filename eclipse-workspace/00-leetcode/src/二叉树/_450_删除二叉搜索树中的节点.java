@@ -125,7 +125,7 @@ public class _450_删除二叉搜索树中的节点 {
         }
     }
 
-	public static TreeNode deleteNode(TreeNode root, int key) {
+	public static TreeNode deleteNode11(TreeNode root, int key) {
 		TreeNode cur = root,curParent = null;
 		while (cur != null && cur.val != key) {
 			curParent = cur;
@@ -177,7 +177,61 @@ public class _450_删除二叉搜索树中的节点 {
 		
 		
 	}
-
+	
+	public static TreeNode deleteNode(TreeNode root, int key) {
+		TreeNode cur = root,curParent = null;
+		while (cur != null && cur.val != key) {
+			curParent = cur;
+			if(cur.val > key) {
+				cur = cur.left;
+			}else {
+				cur = cur.right;
+			}
+		}
+		
+		if(cur == null) {
+			return root;
+		}
+		
+		//叶子节点
+		if(cur.left == null && cur.right == null) {
+			cur = null;
+		}else if (cur.left == null) {
+			cur = cur.right;
+		}else if (cur.right == null) {
+			cur = cur.left;
+		}else {
+			TreeNode succeed = cur.right,succeedParent = cur;
+			while (succeed.left!=null) {
+				succeedParent = succeed;
+				succeed = succeed.left;
+				
+			}
+			if(succeedParent == cur) {
+				cur.right = succeed.right;
+			}else {
+				succeedParent.left = succeed.right;
+			}
+			
+			succeed.left = cur.left;
+			succeed.right = cur.right;
+			cur = succeed;
+		}
+		
+		if(curParent==null) {
+			return cur;
+		}else {
+			if(curParent.left != null && curParent.left.val == key) {
+				curParent.left = cur;
+			}else {
+				curParent.right = cur;
+			}
+			return root;
+		}
+		
+		
+	}
+	
 	public static void main(String[] args) {
 //		TreeNode node0 = new TreeNode(5);
 //		TreeNode node1 = new TreeNode(3);
@@ -198,20 +252,35 @@ public class _450_删除二叉搜索树中的节点 {
 //		node3.left = node7;
 //		node6.right = node8;
 //		deleteNode(node0,7);
-		TreeNode node1 = new TreeNode(5);
-		TreeNode node2 = new TreeNode(3);
-		TreeNode node3 = new TreeNode(6);
-		TreeNode node4 = new TreeNode(2);
-		TreeNode node5 = new TreeNode(4);
-		TreeNode node6 = new TreeNode(7);
+//		TreeNode node1 = new TreeNode(5);
+//		TreeNode node2 = new TreeNode(3);
+//		TreeNode node3 = new TreeNode(6);
+//		TreeNode node4 = new TreeNode(2);
+//		TreeNode node5 = new TreeNode(4);
+//		TreeNode node6 = new TreeNode(7);
+//		
+//		node1.left = node2;
+//		node1.right = node3;
+//		node2.left = node4;
+//		node2.right = node5;
+//		node3.right = node6;
+//		
+//		deleteNode(node1,0);
+		
+		TreeNode node1 = new TreeNode(50);
+		TreeNode node2 = new TreeNode(30);
+		TreeNode node3 = new TreeNode(70);
+		TreeNode node4 = new TreeNode(40);
+		TreeNode node5 = new TreeNode(60);
+		TreeNode node6 = new TreeNode(80);
 		
 		node1.left = node2;
 		node1.right = node3;
-		node2.left = node4;
-		node2.right = node5;
-		node3.right = node6;
+		node2.right = node4;
 		
-		deleteNode(node1,0);
+		node3.left = node5;
+		node3.right = node6;
+		deleteNode(node1,50);
 		
 	}
 	
